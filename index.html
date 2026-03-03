@@ -34,13 +34,30 @@
                 <span class="btn-close"></span>
                 <span class="btn-min"></span>
                 <span class="btn-max"></span>
-                <span class="terminal-title">bash — user@wishlist:~</span>
+                <span class="terminal-title">zsh — kubitre@wishlist:~</span>
+                <button id="theme-toggle" class="theme-toggle-btn" title="Упростить дизайн">sudo killall
+                    effects</button>
             </div>
-            <div class="terminal-body">
-                <p class="command"><span class="prompt">user@wishlist:~$</span> ./show_gifts.sh --theme=festive-dev</p>
-                <h1 class="output-title">Выполняется загрузка Вишлиста [v2.0] ... 🎅💻</h1>
-                <p class="output-text">Инициализация модулей радости... Успешно.</p>
-                <p class="output-text">Ожидание коммитов с подарками... В процессе.</p>
+            <div class="terminal-body" id="term-body">
+                <div id="term-output" class="term-output-container">
+                    <p class="command"><span class="prompt">user@wishlist:~$</span> <span class="typing-line"
+                            id="term-cmd">./show_gifts.sh --source=*********</span></p>
+                    <div id="term-boot-seq" class="hidden">
+                        <h1 class="output-title">Выполняется загрузка Вишлиста... 🎅💻</h1>
+                        <p class="output-text typing-line" id="term-out-1">Соединение с внешней базой трекинга
+                            желаний...
+                            Успешно.</p>
+                        <p class="output-text typing-line" id="term-out-2">Ожидание коммитов с подарками... В процессе.
+                        </p>
+                    </div>
+                </div>
+                <div class="command-input-row hidden" id="command-input-row">
+                    <span class="prompt">user@wishlist:~$</span>
+                    <div class="input-wrapper">
+                        <input type="text" id="cli-input" class="cli-input" autocomplete="off" spellcheck="false">
+                        <span class="cli-cursor"></span>
+                    </div>
+                </div>
             </div>
         </header>
 
@@ -63,7 +80,7 @@
         </main>
 
         <footer class="terminal-footer">
-            <p><span class="prompt">kubitre@wishlist:~$</span> echo "Сделано с ❤️ и ☕ для друзей"</p>
+            <p><span class="prompt">kubitre@wishlist:~$</span> echo "Сделано с ❤️ и ☕"</p>
         </footer>
     </div>
 
@@ -81,9 +98,9 @@
                 <p class="card-description"></p>
                 <div class="card-footer">
                     <span class="card-price"></span>
-                    <a href="#" class="card-btn" target="_blank" rel="noopener noreferrer">
-                        <span class="btn-icon">🔗</span> Git Push (Подарить)
-                    </a>
+                    <button class="card-btn push-btn" data-id="">
+                        <span class="btn-icon">🔗</span> <span class="btn-text">Git Push (Подарить)</span>
+                    </button>
                 </div>
             </div>
         </div>
