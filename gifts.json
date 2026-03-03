@@ -1,38 +1,172 @@
 [
-  {
-    "id": 1,
-    "title": "MacBook Pro M3 Max",
-    "image": "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/mbp14-spaceblack-select-202310?wid=904&hei=840&fmt=jpeg&qlt=90&.v=1697311054290",
-    "link": "https://www.apple.com/shop/buy-mac/macbook-pro",
-    "price": "$3,199",
-    "description": "Мечта для работы и пет-проектов. Мощности хватит на всё.",
-    "priority": "high"
-  },
-  {
-    "id": 2,
-    "title": "PlayStation 5",
-    "image": "https://gmedia.playstation.com/is/image/SIEPDC/ps5-product-thumbnail-01-en-14sep21?$facebook$",
-    "link": "https://direct.playstation.com/",
-    "price": "$499",
-    "description": "Для вечерних каток с друзьями.",
-    "priority": "medium"
-  },
-  {
-    "id": 3,
-    "title": "Sony WH-1000XM5",
-    "image": "https://m.media-amazon.com/images/I/51aXvjzcukL._AC_SX679_.jpg",
-    "link": "https://www.amazon.com/Sony-WH-1000XM5-Canceling-Headphones-Hands-Free/dp/B09XS7JWHH",
-    "price": "$398",
-    "description": "Классные наушники с лучшим шумоподавлением.",
-    "priority": "high"
-  },
-  {
-    "id": 4,
-    "title": "Подарочная карта Steam",
-    "image": "https://store.cloudflare.steamstatic.com/public/images/gift/steamcards_promo_02.png",
-    "link": "https://store.steampowered.com/digitalgiftcards/",
-    "price": "Любая сумма",
-    "description": "Игры лишними не бывают, всегда найду куда потратить!",
-    "priority": "low"
-  }
+    {
+        "id": 1,
+        "title": "MacBook Pro M5",
+        "image": "images/macbook.jpg",
+        "link": "https://www.apple.com/shop/buy-mac/macbook-pro",
+        "price": "$3,199",
+        "description": "Мощности хватит для компиляции всего и сразу.",
+        "priority": "high",
+        "category": "Железо"
+    },
+    {
+        "id": 2,
+        "title": "Умная гирлянда Twinkly",
+        "image": "images/twinkly.jpg",
+        "link": "https://twinkly.com/",
+        "price": "$120",
+        "description": "Чтоб управлять ёлкой прямо через терминал по API.",
+        "priority": "medium",
+        "category": "Smart Home"
+    },
+    {
+        "id": 3,
+        "title": "JetBrains All Products Pack",
+        "image": "images/jetbrains.png",
+        "link": "https://www.jetbrains.com/all/",
+        "price": "$289",
+        "description": "Лучшие IDE для комфортного кодинга.",
+        "priority": "high",
+        "category": "Софт"
+    },
+    {
+        "id": 4,
+        "title": "Raspberry Pi 5",
+        "image": "images/raspberry.jpg",
+        "link": "https://www.raspberrypi.com/products/raspberry-pi-5/",
+        "price": "$80",
+        "description": "Для домашних серверов и пет-проектов.",
+        "priority": "low",
+        "category": "Железо"
+    },
+    {
+        "id": 5,
+        "title": "Уточка для дебаггинга (Новогодняя)",
+        "image": "images/duck.png",
+        "link": "",
+        "price": "$15",
+        "description": "Классический инструмент программиста, но в шапочке Санты.",
+        "priority": "medium",
+        "category": "Разное"
+    },
+    {
+        "id": 6,
+        "title": "Боксерские перчатки (14-16 oz)",
+        "image": "images/boxing_gloves.png",
+        "link": "https://sportmaster.ru/catalog/vidy_sporta/edinoborstva/ekipirovka/bokserskie_perchatki/",
+        "price": "~$50",
+        "description": "Для тренировок по боксу, спаррингов и выпуска пара. Например Clinch или Everlast.",
+        "priority": "high",
+        "category": "Спорт"
+    },
+    {
+        "id": 7,
+        "title": "УШМ (Болгарка) Makita/Bosch",
+        "image": "images/angle_grinder.png",
+        "link": "https://www.bosch-professional.com/ru/ru/uglovye-shlifmashiny-101145-ocs-c/",
+        "price": "~$100",
+        "description": "Надежная болгарка с регулировкой оборотов. Незаменимый инструмент для гаража и крафта.",
+        "priority": "high",
+        "category": "Инструменты"
+    },
+    {
+        "id": 8,
+        "title": "Сплит-клавиатура (ZSA Moonlander)",
+        "image": "images/split_keyboard.png",
+        "link": "https://www.zsa.io/moonlander/",
+        "price": "$365",
+        "description": "Эргономичная механическая сплит-клавиатура для комфортной разработки без боли в кистях.",
+        "priority": "high",
+        "category": "Железо"
+    },
+    {
+        "id": 9,
+        "title": "Пластик для 3D-принтера (PETG/PLA)",
+        "image": "images/filament_spools.png",
+        "link": "https://rec3d.ru/",
+        "price": "~$20",
+        "description": "Катушки PETG, PLA или ABS пластика для 3D-печати и создания новых прототипов.",
+        "priority": "medium",
+        "category": "Разное"
+    },
+    {
+        "id": 10,
+        "title": "VR-шлем Meta Quest 3",
+        "image": "images/vr_headset.png",
+        "link": "https://www.meta.com/quest/quest-3/",
+        "price": "$499",
+        "description": "Лучшее портативное погружение в компьютерные игры и виртуальную реальность.",
+        "priority": "medium",
+        "category": "Игры"
+    },
+    {
+        "id": 11,
+        "title": "Подписка GitHub Copilot",
+        "image": "images/ai_coding_assistant.png",
+        "link": "https://github.com/features/copilot",
+        "price": "$100/год",
+        "description": "Незаменимый AI помощник для ускорения рутинной разработки.",
+        "priority": "high",
+        "category": "Софт"
+    },
+    {
+        "id": 12,
+        "title": "Стартовый набор ESP32 Arduino",
+        "image": "images/electronics_kit.png",
+        "link": "https://amperka.ru/",
+        "price": "~$50",
+        "description": "Набор плат ESP32 и датчиков для изобретения новых умных гаджетов.",
+        "priority": "medium",
+        "category": "Железо"
+    },
+    {
+        "id": 13,
+        "title": "Набор отверток iFixit Pro Tech Toolkit",
+        "image": "images/screwdriver_set.png",
+        "link": "https://eustore.ifixit.com/products/pro-tech-toolkit",
+        "price": "€75",
+        "description": "Один из лучших и самых точных наборов инструментов для ремонта любой электроники.",
+        "priority": "high",
+        "category": "Инструменты"
+    },
+    {
+        "id": 14,
+        "title": "Формовочный силикон",
+        "image": "images/molding_silicone.png",
+        "link": "https://lenkapenka.ru/catalog/silikon_dlya_form/",
+        "price": "~$40",
+        "description": "Двухкомпонентный безусадочный силикон для создания долговечных форм под литье пластика/эпоксидки.",
+        "priority": "medium",
+        "category": "Крафт"
+    },
+    {
+        "id": 15,
+        "title": "Металлическая головоломка Hanayama",
+        "image": "images/metal_puzzle.png",
+        "link": "https://cube-market.ru/catalog/metallicheskie-golovolomki",
+        "price": "~$15",
+        "description": "Качественные литые головоломки от 4 до 6 уровня сложности. Отлично расслабляют мозг.",
+        "priority": "low",
+        "category": "Хобби"
+    },
+    {
+        "id": 16,
+        "title": "Туристический рюкзак Peak Design Travel",
+        "image": "images/travel_backpack.png",
+        "link": "https://www.peakdesign.com/products/travel-backpack/",
+        "price": "$229",
+        "description": "Вместительный, надежный и стильный рюкзак для путешествий с кучей техники под рукой.",
+        "priority": "medium",
+        "category": "Путешествия"
+    },
+    {
+        "id": 17,
+        "title": "Мотокрепление Quad Lock",
+        "image": "images/motorcycle_mount.png",
+        "link": "https://www.quadlockcase.com/collections/shop-motorcycle",
+        "price": "~$80",
+        "description": "Самое надежное крепление смартфона на руль мотоцикла с виброгасителем (чтобы не сломать камеру).",
+        "priority": "high",
+        "category": "Мото"
+    }
 ]

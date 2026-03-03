@@ -1,58 +1,95 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Мой Вишлист 🎁</title>
-  <meta name="description" content="Мой список желаемых подарков">
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wishlist | /home/dev/gifts 🎄</title>
+    <meta name="description" content="Мой список желаемых подарков">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
+
 <body>
-  <div class="background-elements">
-    <div class="blob blob-1"></div>
-    <div class="blob blob-2"></div>
-    <div class="blob blob-3"></div>
-  </div>
-  
-  <div class="container">
-    <header class="header">
-      <h1 class="gradient-text">Мой Вишлист 🎁</h1>
-      <p class="subtitle">Идеи подарков, которые сделают меня чуточку счастливее</p>
-    </header>
-
-    <main>
-      <div id="loader" class="loader">
-        <div class="spinner"></div>
-      </div>
-      <div id="gifts-grid" class="grid hidden">
-        <!-- Сюда будут динамически добавлены карточки подарков из gifts.json -->
-      </div>
-    </main>
-    
-    <footer>
-      <p>Создано с ❤️ для друзей и близких</p>
-    </footer>
-  </div>
-
-  <!-- Шаблон карточки подарка -->
-  <template id="gift-card-template">
-    <div class="card glass">
-      <div class="card-image-wrapper">
-        <img class="card-image" src="" alt="Изображение подарка">
-        <span class="badge priority-badge"></span>
-      </div>
-      <div class="card-content">
-        <h2 class="card-title"></h2>
-        <p class="card-description"></p>
-        <div class="card-footer">
-          <span class="card-price"></span>
-          <a href="#" class="card-btn" target="_blank" rel="noopener noreferrer">Подарить!</a>
-        </div>
-      </div>
+    <div class="snowflakes" aria-hidden="true">
+        <div class="snowflake">{ }</div>
+        <div class="snowflake">&lt;/&gt;</div>
+        <div class="snowflake">/*</div>
+        <div class="snowflake">#</div>
+        <div class="snowflake">]</div>
+        <div class="snowflake">;</div>
+        <div class="snowflake">()</div>
+        <div class="snowflake">*</div>
+        <div class="snowflake">=&gt;</div>
+        <div class="snowflake">01</div>
+        <div class="snowflake">PANIC</div>
+        <div class="snowflake">KERNEL ERROR</div>
+        <div class="snowflake">404 NOT FOUND</div>
+        <div class="snowflake">All test passed</div>
     </div>
-  </template>
 
-  <script src="script.js"></script>
+    <div class="container">
+        <header class="header terminal-window">
+            <div class="terminal-header">
+                <span class="btn-close"></span>
+                <span class="btn-min"></span>
+                <span class="btn-max"></span>
+                <span class="terminal-title">bash — user@wishlist:~</span>
+            </div>
+            <div class="terminal-body">
+                <p class="command"><span class="prompt">user@wishlist:~$</span> ./show_gifts.sh --theme=festive-dev</p>
+                <h1 class="output-title">Выполняется загрузка Вишлиста [v2.0] ... 🎅💻</h1>
+                <p class="output-text">Инициализация модулей радости... Успешно.</p>
+                <p class="output-text">Ожидание коммитов с подарками... В процессе.</p>
+            </div>
+        </header>
+
+        <main>
+            <div class="filters-container glass-panel">
+                <div class="filters-header">
+                    <span class="prompt">>_</span> фильтрация_по_категориям:
+                </div>
+                <div id="filters" class="filters">
+                    <button class="filter-btn active" data-filter="all">Всё (*)</button>
+                </div>
+            </div>
+
+            <div id="loader" class="loader">
+                <div class="spinner"></div>
+                <p class="loading-text">Fetching data...</p>
+            </div>
+            <div id="gifts-grid" class="grid hidden">
+            </div>
+        </main>
+
+        <footer class="terminal-footer">
+            <p><span class="prompt">kubitre@wishlist:~$</span> echo "Сделано с ❤️ и ☕ для друзей"</p>
+        </footer>
+    </div>
+
+    <template id="gift-card-template">
+        <div class="card dev-card">
+            <div class="card-image-wrapper">
+                <img class="card-image" src="" alt="Изображение подарка">
+                <div class="card-overlay"></div>
+                <span class="badge priority-badge"></span>
+                <span class="badge category-badge"></span>
+            </div>
+            <div class="card-content">
+                <h2 class="card-title"></h2>
+                <div class="code-divider"></div>
+                <p class="card-description"></p>
+                <div class="card-footer">
+                    <span class="card-price"></span>
+                    <a href="#" class="card-btn" target="_blank" rel="noopener noreferrer">
+                        <span class="btn-icon">🔗</span> Git Push (Подарить)
+                    </a>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <script src="script.js"></script>
 </body>
+
 </html>

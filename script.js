@@ -1,98 +1,114 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const gridContainer = document.getElementById('gifts-grid');
-  const loader = document.getElementById('loader');
-  const template = document.getElementById('gift-card-template');
+    const gridContainer = document.getElementById('gifts-grid');
+    const loader = document.getElementById('loader');
+    const template = document.getElementById('gift-card-template');
+    const filtersContainer = document.getElementById('filters');
 
-  // Функция для создания задержки анимации при появлении карточек
-  const getAnimationDelay = (index) => `${index * 0.1}s`;
+    let allGifts = [];
 
-  // Разбор приоритета: возвращает класс для бейджа и текст
-  const getPriorityInfo = (priority) => {
-    const p = (priority || 'medium').toLowerCase();
-    
-    if (p === 'high' || p === 'высокий') {
-      return { class: 'priority-high', text: '🔥 Очень хочу' };
-    }
-    if (p === 'low' || p === 'низкий') {
-      return { class: 'priority-low', text: 'Подождет' };
-    }
-    return { class: 'priority-medium', text: 'Хорошо бы' };
-  };
+    const getPriorityInfo = (priority) => {
+        const p = (priority || 'medium').toLowerCase();
+        if (p === 'high' || p === 'высокий') return { class: 'priority-high', text: 'ERR: CRITICAL' };
+        if (p === 'low' || p === 'низкий') return { class: 'priority-low', text: 'INFO: LOW' };
+        return { class: 'priority-medium', text: 'WARN: NORMAL' };
+    };
 
-  // Имитация небольшой задержки для красоты (0.5с), затем загрузка json
-  setTimeout(() => {
-    fetch('gifts.json')
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.json();
-      })
-      .then(gifts => {
-        // Скрываем лоадер и показываем сетку
-        loader.classList.add('hidden');
-        gridContainer.classList.remove('hidden');
+    const renderGifts = (giftsToRender) => {
+        gridContainer.innerHTML = '';
 
-        if (gifts.length === 0) {
-          gridContainer.innerHTML = '<p style="text-align: center; color: var(--text-secondary); grid-column: 1 / -1; font-size: 1.2rem;">Вишлист пока пуст. Добавьте подарки в gifts.json!</p>';
-          return;
+        if (giftsToRender.length === 0) {
+            gridContainer.innerHTML = '<p style="color: var(--text-comment); grid-column: 1 / -1; text-align: center; font-size: 1.1rem; padding: 20px;">// Карточек не найдено. Возврат 404.</p>';
+            return;
         }
 
-        // Рендер карточек на основе JSON
-        gifts.forEach((gift, index) => {
-          const clone = template.content.cloneNode(true);
-          const card = clone.querySelector('.card');
-          
-          // Анимация с небольшой задержкой для каждой следующей карточки
-          card.style.animationDelay = getAnimationDelay(index);
-          
-          // Изображение
-          const img = clone.querySelector('.card-image');
-          img.src = gift.image && gift.image.trim() !== '' 
-            ? gift.image 
-            : 'https://placehold.co/600x400/161b22/8b949e?text=No+Image';
-          img.alt = gift.title;
-          
-          // Обработка ошибки загрузки пикчи
-          img.onerror = function() {
-            this.src = 'https://placehold.co/600x400/161b22/8b949e?text=Image+Error';
-          };
+        giftsToRender.forEach((gift, index) => {
+            const clone = template.content.cloneNode(true);
+            const card = clone.querySelector('.card');
+            card.style.animation = `fadeIn 0.5s ease-out ${index * 0.1}s backwards`;
 
-          // Бейдж приоритета
-          const badge = clone.querySelector('.badge');
-          const prioInfo = getPriorityInfo(gift.priority);
-          badge.classList.add(prioInfo.class);
-          badge.textContent = prioInfo.text;
+            const img = clone.querySelector('.card-image');
+            img.src = gift.image && gift.image.trim() !== '' ? gift.image : 'https://placehold.co/600x400/161b22/8b949e?text=Image+Not+Found';
+            img.onerror = function () {
+                this.src = 'https://placehold.co/600x400/161b22/8b949e?text=Broken_Link.png';
+            };
 
-          // Текст
-          clone.querySelector('.card-title').textContent = gift.title;
-          clone.querySelector('.card-description').textContent = gift.description || '';
-          
-          // Цена
-          const priceEl = clone.querySelector('.card-price');
-          priceEl.textContent = gift.price || '';
+            const pBadge = clone.querySelector('.priority-badge');
+            const prioInfo = getPriorityInfo(gift.priority);
+            pBadge.classList.add(prioInfo.class);
+            pBadge.textContent = prioInfo.text;
 
-          // Кнопка ссылки
-          const btn = clone.querySelector('.card-btn');
-          if (gift.link) {
-            btn.href = gift.link;
-          } else {
-            btn.style.display = 'none'; // Скрываем если ссылки нет
-          }
+            const cBadge = clone.querySelector('.category-badge');
+            if (gift.category) {
+                cBadge.textContent = `{ ${gift.category} }`;
+            } else {
+                cBadge.style.display = 'none';
+            }
 
-          gridContainer.appendChild(clone);
+            const safeTitle = gift.title.replace(/"/g, "'");
+            clone.querySelector('.card-title').innerHTML = `<span style="color:var(--text-keyword)">const</span> <span style="color:var(--text-primary)">gift</span> = <span style="color:var(--text-string)">"${safeTitle}"</span>;`;
+
+            clone.querySelector('.card-description').textContent = gift.description || '// Без описания';
+            clone.querySelector('.card-price').textContent = gift.price || 'null';
+
+            const btn = clone.querySelector('.card-btn');
+            if (gift.link) {
+                btn.href = gift.link;
+            } else {
+                btn.style.display = 'none';
+            }
+
+            gridContainer.appendChild(clone);
         });
-      })
-      .catch(error => {
-        console.error('Ошибка при загрузке данных:', error);
-        loader.classList.add('hidden');
-        gridContainer.classList.remove('hidden');
-        gridContainer.innerHTML = `
-          <div style="text-align: center; grid-column: 1 / -1; padding: 40px; background: rgba(255,71,87,0.1); border-radius: 20px; border: 1px solid rgba(255,71,87,0.3);">
-            <h2 style="color: var(--priority-high); margin-bottom: 10px;">Ой, что-то пошло не так!</h2>
-            <p style="color: var(--text-secondary);">Не удалось загрузить <code>gifts.json</code>. Убедитесь, что файл существует и JSON в нем валидный.</p>
-          </div>
-        `;
-      });
-  }, 500);
+    };
+
+    const initFilters = (gifts) => {
+        const categories = new Set();
+        gifts.forEach(g => {
+            if (g.category && g.category.trim() !== '') {
+                categories.add(g.category.trim());
+            }
+        });
+
+        categories.forEach(category => {
+            const btn = document.createElement('button');
+            btn.className = 'filter-btn';
+            btn.dataset.filter = category;
+            btn.textContent = `"${category}"`;
+            filtersContainer.appendChild(btn);
+        });
+
+        filtersContainer.addEventListener('click', (e) => {
+            if (!e.target.classList.contains('filter-btn')) return;
+
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            e.target.classList.add('active');
+
+            const filterVal = e.target.dataset.filter;
+
+            if (filterVal === 'all') {
+                renderGifts(allGifts);
+            } else {
+                const filtered = allGifts.filter(g => g.category && g.category.trim() === filterVal);
+                renderGifts(filtered);
+            }
+        });
+    };
+
+    setTimeout(() => {
+        fetch('gifts.json')
+            .then(r => r.json())
+            .then(gifts => {
+                allGifts = gifts;
+                loader.classList.add('hidden');
+                gridContainer.classList.remove('hidden');
+
+                initFilters(gifts);
+                renderGifts(gifts);
+            })
+            .catch(err => {
+                loader.classList.add('hidden');
+                gridContainer.classList.remove('hidden');
+                gridContainer.innerHTML = `<p style="color: var(--text-keyword); grid-column: 1 / -1;">[FATAL ERROR]: Не удалось распарсить gifts.json. ${err.message}</p>`;
+            });
+    }, 800);
 });
