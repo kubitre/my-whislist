@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "title": "MacBook Pro M3 Max",
+    "image": "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/mbp14-spaceblack-select-202310?wid=904&hei=840&fmt=jpeg&qlt=90&.v=1697311054290",
+    "link": "https://www.apple.com/shop/buy-mac/macbook-pro",
+    "price": "$3,199",
+    "description": "Мечта для работы и пет-проектов. Мощности хватит на всё.",
+    "priority": "high"
+  },
+  {
+    "id": 2,
+    "title": "PlayStation 5",
+    "image": "https://gmedia.playstation.com/is/image/SIEPDC/ps5-product-thumbnail-01-en-14sep21?$facebook$",
+    "link": "https://direct.playstation.com/",
+    "price": "$499",
+    "description": "Для вечерних каток с друзьями.",
+    "priority": "medium"
+  },
+  {
+    "id": 3,
+    "title": "Sony WH-1000XM5",
+    "image": "https://m.media-amazon.com/images/I/51aXvjzcukL._AC_SX679_.jpg",
+    "link": "https://www.amazon.com/Sony-WH-1000XM5-Canceling-Headphones-Hands-Free/dp/B09XS7JWHH",
+    "price": "$398",
+    "description": "Классные наушники с лучшим шумоподавлением.",
+    "priority": "high"
+  },
+  {
+    "id": 4,
+    "title": "Подарочная карта Steam",
+    "image": "https://store.cloudflare.steamstatic.com/public/images/gift/steamcards_promo_02.png",
+    "link": "https://store.steampowered.com/digitalgiftcards/",
+    "price": "Любая сумма",
+    "description": "Игры лишними не бывают, всегда найду куда потратить!",
+    "priority": "low"
+  }
+]

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Мой Вишлист 🎁</title>
+  <meta name="description" content="Мой список желаемых подарков">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="background-elements">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
+  
+  <div class="container">
+    <header class="header">
+      <h1 class="gradient-text">Мой Вишлист 🎁</h1>
+      <p class="subtitle">Идеи подарков, которые сделают меня чуточку счастливее</p>
+    </header>
+
+    <main>
+      <div id="loader" class="loader">
+        <div class="spinner"></div>
+      </div>
+      <div id="gifts-grid" class="grid hidden">
+        <!-- Сюда будут динамически добавлены карточки подарков из gifts.json -->
+      </div>
+    </main>
+    
+    <footer>
+      <p>Создано с ❤️ для друзей и близких</p>
+    </footer>
+  </div>
+
+  <!-- Шаблон карточки подарка -->
+  <template id="gift-card-template">
+    <div class="card glass">
+      <div class="card-image-wrapper">
+        <img class="card-image" src="" alt="Изображение подарка">
+        <span class="badge priority-badge"></span>
+      </div>
+      <div class="card-content">
+        <h2 class="card-title"></h2>
+        <p class="card-description"></p>
+        <div class="card-footer">
+          <span class="card-price"></span>
+          <a href="#" class="card-btn" target="_blank" rel="noopener noreferrer">Подарить!</a>
+        </div>
+      </div>
+    </div>
+  </template>
+
+  <script src="script.js"></script>
+</body>
+</html>
